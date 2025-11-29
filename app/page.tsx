@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { BannerSlider } from "@/components/banner-slider"
 import { FestivalsGrid } from "@/components/festivals-grid"
 import { CalendarBlogSection } from "@/components/calendar-blog-section"
+import { ServicesSection } from "@/components/services-section"
 import { StoriesSection } from "@/components/stories-section"
 import { GallerySection } from "@/components/gallery-section"
 import { PlanningGuide } from "@/components/planning-guide"
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <BannerSlider />
       <CalendarBlogSection />
+      <ServicesSection />
       <FestivalsGrid />
       <StoriesSection />
       <GallerySection />

@@ -15,8 +15,8 @@ export default function BlogPage() {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-wine-red/5 via-warm-beige/10 to-gold/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Blog Kính Lễ
+            <h1 className="text-4xl md:text-5xl font-bold text-wine-red mb-4">
+              Bài viết Kính Lễ
             </h1>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
               Khám phá kiến thức về văn hóa Việt, phong thủy, tử vi, và tâm linh

@@ -15,7 +15,7 @@ export function CalendarBlogSection() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-wine-red mb-2 text-balance">Lịch & Blog</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-wine-red mb-2 text-balance">Lịch & Bài viết</h2>
           <p className="text-muted-foreground">Theo dõi lịch âm-dương và cập nhật tin tức lễ hội</p>
         </div>
 

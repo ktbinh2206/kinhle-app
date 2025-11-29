@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 export function BlogSidebar() {
   return (
     <div className="bg-card rounded-lg shadow-sm p-6 border border-border">
-      <h3 className="text-lg font-semibold text-wine-red mb-4">Blog Gần Đây</h3>
+      <h3 className="text-lg font-semibold text-wine-red mb-4">Bài viết Gần Đây</h3>
 
       <div className="space-y-4">
         {blogPosts.map((post) => (

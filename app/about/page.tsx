@@ -168,7 +168,7 @@ export default function AboutPage() {
                 href="#blog"
                 className="px-6 py-3 border-2 border-wine-red text-wine-red rounded-lg hover:bg-wine-red/5 transition-colors font-medium"
               >
-                Đọc Blog
+                Đọc Bài viết
               </a>
             </div>
           </div>

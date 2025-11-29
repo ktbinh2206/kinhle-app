@@ -34,7 +34,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors"
           >
             <ArrowLeft size={20} />
-            <span>Quay lại Blog</span>
+            <span>Quay lại Bài viết</span>
           </Link>
         </div>
 
