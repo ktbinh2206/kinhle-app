@@ -16,11 +16,14 @@ export function Header() {
   }, [])
 
   const navLinks = [
-    { label: "Lễ Hội", href: "#festivals" },
-    { label: "Câu Chuyện", href: "#stories" },
-    { label: "Thư Viện", href: "#gallery" },
-    { label: "Hướng Dẫn", href: "#planning" },
-    { label: "Tin Tức", href: "#newsletter" },
+    { label: "Trang chủ", href: "/" },
+    { label: "Về Kinh Lễ", href: "/about" },
+    { label: "Văn khấn", href: "/prayers" },
+    { label: "Ngày lễ", href: "#festivals" },
+    { label: "Cửa hàng", href: "#shop" },
+    { label: "Blog", href: "#blog" },
+    { label: "Dịch vụ", href: "#services" },
+    { label: "Liên hệ", href: "#contact" },
   ]
 
   return (
@@ -31,15 +34,13 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg">
-            Ⓛ
-          </div>
-          <span className="font-bold text-xl text-primary hidden sm:inline">Lễ Hội Việt</span>
+        <div className="flex items-center gap-3">
+          <img src="/logo.png" alt="Kinh Lễ" className="w-14 h-14 object-contain rounded-lg" />
+          <span className="font-bold text-xl text-primary hidden sm:inline">Kính Lễ</span>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -50,6 +51,16 @@ export function Header() {
             </a>
           ))}
         </nav>
+
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium">
+            Đăng nhập
+          </button>
+          <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
+            Đăng ký
+          </button>
+        </div>
 
         {/* Mobile Menu Button */}
         <button className="md:hidden p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Mở menu">
@@ -71,6 +82,14 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <div className="flex flex-col gap-3 pt-4 border-t border-muted">
+              <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-left">
+                Đăng nhập
+              </button>
+              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                Đăng ký
+              </button>
+            </div>
           </div>
         </nav>
       )}

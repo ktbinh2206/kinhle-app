@@ -7,26 +7,19 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Lễ Hội Việt - Vietnamese Festivals & Traditions",
+  title: "Kinh Lễ - Lịch Việt & Lễ Hội Truyền Thống",
   description:
-    "Explore Vietnamese festivals, traditions, and celebrations. Learn about Tết, Mid-Autumn Festival, and more cultural events.",
+    "Khám phá lịch âm Việt Nam, lễ hội truyền thống và phong tục tập quán. Tìm hiểu về Tết Nguyên Đán, Tết Trung Thu và các ngày lễ quan trọng.",
   generator: "v0.app",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/logo.png",
+        sizes: "any",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/logo.png",
+    shortcut: "/logo.png",
   },
 }
 
