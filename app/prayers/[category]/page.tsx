@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PrayerCategoryPageProps): Pro
   }
 
   return {
-    title: `${categoryData.title} - Kinh Lễ`,
+    title: `${categoryData.title} - Kính Lễ`,
     description: categoryData.description,
   }
 }

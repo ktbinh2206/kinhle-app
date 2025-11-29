@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Văn Khấn - Kinh Lễ",
+  title: "Văn Khấn - Kính Lễ",
   description:
     "Bộ sưu tập văn khấn đầy đủ cho mọi dịp lễ, nghi thức cúng bái - từ cúng rằm, tết đến lễ gia tiên, thổ địa.",
 }

@@ -7,7 +7,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kinh Lễ - Lịch Việt & Lễ Hội Truyền Thống",
+  title: "Kính Lễ - Lịch Việt & Lễ Hội Truyền Thống",
   description:
     "Khám phá lịch âm Việt Nam, lễ hội truyền thống và phong tục tập quán. Tìm hiểu về Tết Nguyên Đán, Tết Trung Thu và các ngày lễ quan trọng.",
   generator: "v0.app",

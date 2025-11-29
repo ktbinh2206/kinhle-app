@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PrayerDetailPageProps): Promi
   }
 
   return {
-    title: `${prayer.title} - Kinh Lễ`,
+    title: `${prayer.title} - Kính Lễ`,
     description: prayer.description,
   }
 }

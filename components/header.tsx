@@ -17,11 +17,11 @@ export function Header() {
 
   const navLinks = [
     { label: "Trang chủ", href: "/" },
-    { label: "Về Kinh Lễ", href: "/about" },
+    { label: "Về Kính Lễ", href: "/about" },
     { label: "Văn khấn", href: "/prayers" },
     { label: "Ngày lễ", href: "#festivals" },
     { label: "Cửa hàng", href: "#shop" },
-    { label: "Blog", href: "#blog" },
+    { label: "Blog", href: "/blog" },
     { label: "Dịch vụ", href: "#services" },
     { label: "Liên hệ", href: "#contact" },
   ]
@@ -35,7 +35,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="Kinh Lễ" className="w-14 h-14 object-contain rounded-lg" />
+          <img src="/logo.png" alt="Kính Lễ" className="w-14 h-14 object-contain rounded-lg" />
           <span className="font-bold text-xl text-primary hidden sm:inline">Kính Lễ</span>
         </div>
 
