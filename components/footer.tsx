@@ -54,6 +54,7 @@ export function Footer() {
                 { label: "Về Kính Lễ", href: "/about" },
                 { label: "Dịch vụ", href: "/services" },
                 { label: "Văn khấn", href: "/prayers" },
+                { label: "Ngày lễ", href: "/festivals" },
                 { label: "Bài viết", href: "/blog" },
                 { label: "Liên hệ", href: "#contact" },
               ].map((link) => (
