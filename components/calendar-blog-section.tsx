@@ -19,15 +19,15 @@ export function CalendarBlogSection() {
           <p className="text-muted-foreground">Theo dõi lịch âm-dương và cập nhật tin tức lễ hội</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
           {/* Left column: Calendars */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-3 space-y-6">
             <DailyCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
             <MonthlyCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
           </div>
 
           {/* Right column: Blog */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-4">
             <BlogSidebar />
           </div>
         </div>

@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import Image from "next/image"
+import { prayersData, categoryInfo } from "@/lib/prayers-data"
 
 export const metadata: Metadata = {
   title: "Văn Khấn - Kính Lễ",
@@ -10,61 +12,19 @@ export const metadata: Metadata = {
     "Bộ sưu tập văn khấn đầy đủ cho mọi dịp lễ, nghi thức cúng bái - từ cúng rằm, tết đến lễ gia tiên, thổ địa.",
 }
 
-// Danh sách các loại văn khấn
-const prayerCategories = [
-  {
-    id: "featured",
-    title: "Văn khấn được ghim",
-    description: "Những bài văn khấn phổ biến và hay được sử dụng nhất",
-    icon: "📌",
-    color: "from-wine-red/20 to-gold/20",
-    featured: true,
-  },
-  {
-    id: "tet",
-    title: "Văn khấn Tết",
-    description: "Văn khấn cho dịp Tết Nguyên Đán",
-    icon: "🎊",
-    color: "from-rose-100 to-red-100",
-  },
-  {
-    id: "ram",
-    title: "Văn khấn Rằm",
-    description: "Văn khấn mồng 1, rằm hàng tháng",
-    icon: "🌕",
-    color: "from-amber-100 to-yellow-100",
-  },
-  {
-    id: "gia-tien",
-    title: "Cúng gia tiên",
-    description: "Văn khấn cúng tổ tiên, cúng giỗ",
-    icon: "🙏",
-    color: "from-purple-100 to-pink-100",
-  },
-  {
-    id: "khai-truong",
-    title: "Khai trương",
-    description: "Văn khấn khai trương, khởi công",
-    icon: "🏪",
-    color: "from-green-100 to-emerald-100",
-  },
-  {
-    id: "tho-dia",
-    title: "Thổ địa - Thần tài",
-    description: "Văn khấn cúng thổ địa, thần tài",
-    icon: "🏠",
-    color: "from-blue-100 to-cyan-100",
-  },
-  {
-    id: "nam-moi",
-    title: "Cúng đầu năm",
-    description: "Văn khấn đầu năm, cúng giao thừa",
-    icon: "🎆",
-    color: "from-orange-100 to-amber-100",
-  },
-]
-
 export default function PrayersPage() {
+  // Get prayer counts for each category
+  const getPrayerCount = (categoryId: string) => {
+    return prayersData[categoryId]?.length || 0
+  }
+
+  // Convert categoryInfo to array format with featured flag
+  const prayerCategories = Object.entries(categoryInfo).map(([id, info]) => ({
+    id,
+    ...info,
+    featured: id === "featured",
+  }))
+
   const featuredCategory = prayerCategories.find((cat) => cat.featured)
   const regularCategories = prayerCategories.filter((cat) => !cat.featured)
 
@@ -94,14 +54,29 @@ export default function PrayersPage() {
                 className="block mb-8 group transition-transform hover:scale-[1.02]"
               >
                 <div
-                  className={`bg-gradient-to-br ${featuredCategory.color} rounded-2xl p-8 md:p-12 shadow-lg hover:shadow-xl transition-all border border-wine-red/10`}
+                  className={`bg-gradient-to-br ${featuredCategory.color} rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-wine-red/10`}
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="text-6xl">{featuredCategory.icon}</div>
-                    <div className="flex-1">
-                      <h2 className="text-3xl md:text-4xl font-bold text-wine-red mb-3 group-hover:text-wine-red/80 transition-colors">
-                        {featuredCategory.title}
-                      </h2>
+                  <div className="flex flex-col md:flex-row items-stretch">
+                    {/* Image */}
+                    <div className="relative w-full md:w-1/3 h-48 md:h-auto">
+                      <Image
+                        src={featuredCategory.image}
+                        alt={featuredCategory.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 p-8 md:p-12">
+                      <div className="flex items-center gap-3 mb-3">
+                        <h2 className="text-3xl md:text-4xl font-bold text-wine-red group-hover:text-wine-red/80 transition-colors">
+                          {featuredCategory.title}
+                        </h2>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-wine-red text-white text-sm font-semibold">
+                          {getPrayerCount(featuredCategory.id)}
+                        </span>
+                      </div>
                       <p className="text-lg text-foreground/70 mb-4">{featuredCategory.description}</p>
                       <div className="inline-flex items-center gap-2 text-wine-red font-medium">
                         Xem chi tiết
@@ -129,23 +104,40 @@ export default function PrayersPage() {
                   className="group block transition-transform hover:scale-[1.03]"
                 >
                   <div
-                    className={`bg-gradient-to-br ${category.color} rounded-xl p-6 shadow-md hover:shadow-lg transition-all h-full border border-border/50`}
+                    className={`bg-gradient-to-br ${category.color} rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all h-full border border-border/50 flex flex-col`}
                   >
-                    <div className="text-4xl mb-4">{category.icon}</div>
-                    <h3 className="text-xl font-bold text-wine-red mb-2 group-hover:text-wine-red/80 transition-colors">
-                      {category.title}
-                    </h3>
-                    <p className="text-sm text-foreground/70 mb-4">{category.description}</p>
-                    <div className="inline-flex items-center gap-1 text-wine-red text-sm font-medium">
-                      Xem thêm
-                      <svg
-                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                    {/* Image */}
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={category.image}
+                        alt={category.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-xl font-bold text-wine-red group-hover:text-wine-red/80 transition-colors">
+                          {category.title}
+                        </h3>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-wine-red text-white text-xs font-semibold">
+                          {getPrayerCount(category.id)}
+                        </span>
+                      </div>
+                      <p className="text-sm text-foreground/70 mb-4 flex-1">{category.description}</p>
+                      <div className="inline-flex items-center gap-1 text-wine-red text-sm font-medium">
+                        Xem thêm
+                        <svg
+                          className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </Link>

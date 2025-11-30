@@ -7,19 +7,21 @@ import { bannerSlides } from "@/lib/mockdata"
 export function BannerSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [autoPlay, setAutoPlay] = useState(true)
-  const autoPlayRef = useRef<NodeJS.Timeout>()
+  const autoPlayRef = useRef<number | null>(null)
 
   const slides = bannerSlides
 
   useEffect(() => {
     if (!autoPlay) return
 
-    autoPlayRef.current = setInterval(() => {
+    autoPlayRef.current = window.setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 5000)
 
     return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current)
+      if (autoPlayRef.current !== null) {
+        window.clearInterval(autoPlayRef.current)
+      }
     }
   }, [autoPlay, slides.length])
 
@@ -44,7 +46,7 @@ export function BannerSlider() {
   const slide = slides[currentSlide]
 
   return (
-    <section className="relative w-full h-screen bg-black overflow-hidden pt-16">
+    <section className="relative w-full h-screen overflow-hidden pt-16">
       {/* Slides */}
       {slides.map((s, index) => (
         <div
@@ -53,9 +55,13 @@ export function BannerSlider() {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img src={s.imageUrl || "/placeholder.svg"} alt={s.title} className="w-full h-full object-cover" />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#6D2323] to-transparent opacity-70" />
+          <div className="w-full h-full flex items-center justify-center">
+            <img 
+              src={s.imageUrl || "/placeholder.svg"} 
+              alt={s.title} 
+              className="h-full w-auto object-contain" 
+            />
+          </div>
         </div>
       ))}
 

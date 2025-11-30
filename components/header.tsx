@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
+import { SearchBar } from "./search-bar"
 
 export function Header() {
   const pathname = usePathname()
@@ -20,9 +21,9 @@ export function Header() {
   const navLinks = [
     { label: "Trang chủ", href: "/" },
     { label: "Về Kính Lễ", href: "/about" },
-    { label: "Dịch vụ", href: "/services" },
     { label: "Văn khấn", href: "/prayers" },
     { label: "Bài viết", href: "/blog" },
+    { label: "Dịch vụ", href: "/services" },
     { label: "Liên hệ", href: "#contact" },
   ]
 
@@ -59,8 +60,9 @@ export function Header() {
           })}
         </nav>
 
-        {/* Auth Buttons */}
+        {/* Search & Auth Buttons */}
         <div className="hidden md:flex items-center gap-3">
+          <SearchBar />
           <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium">
             Đăng nhập
           </button>
@@ -79,6 +81,11 @@ export function Header() {
       {isMobileMenuOpen && (
         <nav className="md:hidden bg-background border-t border-muted">
           <div className="px-4 py-4 flex flex-col gap-4">
+            {/* Mobile Search */}
+            <div className="pb-2 border-b border-muted">
+              <SearchBar />
+            </div>
+            
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
               return (
