@@ -16,7 +16,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/kinh-le-background.jpg')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-wine-red/40 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-wine-red/40 backdrop-blur-xs"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto p-12">
               <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl [text-shadow:2px_2px_8px_rgb(0_0_0/80%)]">

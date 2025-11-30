@@ -46,7 +46,7 @@ export function BannerSlider() {
   const slide = slides[currentSlide]
 
   return (
-    <section className="relative w-full h-screen overflow-hidden pt-16">
+    <section className="relative w-full h-[calc(100vh-120px)] overflow-hidden mt-26">
       {/* Slides */}
       {slides.map((s, index) => (
         <div
@@ -75,7 +75,7 @@ export function BannerSlider() {
           <p className="text-lg sm:text-xl text-white/90 text-balance leading-relaxed">{slide.description}</p>
 
           {/* CTA Buttons */}
-          <div className="flex gap-4 pt-4 flex-wrap">
+          {/* <div className="flex gap-4 pt-4 flex-wrap">
             <a
               href={slide.ctaLink}
               className="px-8 py-3 bg-[#A31D1D] text-white font-semibold rounded-lg hover:bg-[#8B1515] transition-colors duration-300"
@@ -88,14 +88,14 @@ export function BannerSlider() {
             >
               Xem chi tiết
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/20 hover:bg-white/40 rounded-full transition-colors duration-300"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-wine-red/80 hover:bg-wine-red hover:scale-110 active:scale-95 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:cursor-pointer"
         aria-label="Slide trước"
       >
         <ChevronLeft size={28} className="text-white" />
@@ -103,7 +103,7 @@ export function BannerSlider() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/20 hover:bg-white/40 rounded-full transition-colors duration-300"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-wine-red/80 hover:bg-wine-red hover:scale-110 active:scale-95 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:cursor-pointer"
         aria-label="Slide tiếp theo"
       >
         <ChevronRight size={28} className="text-white" />
