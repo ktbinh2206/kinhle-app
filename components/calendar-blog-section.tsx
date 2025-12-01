@@ -21,13 +21,13 @@ export function CalendarBlogSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
           {/* Left column: Calendars */}
-          <div className="lg:col-span-3 space-y-6">
+          <div className="lg:col-span-4 space-y-6">
             <DailyCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
             <MonthlyCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
           </div>
 
           {/* Right column: Blog */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <BlogSidebar />
           </div>
         </div>

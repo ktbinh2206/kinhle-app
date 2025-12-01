@@ -150,23 +150,94 @@ export default function AboutPage() {
         </section>
 
         {/* Team/Contact Section */}
-        <section className="py-16 bg-gradient-to-br from-wine-red/5 via-warm-beige/10 to-gold/5">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-wine-red mb-6">Cùng nhau xây dựng</h2>
-            <p className="text-lg text-foreground/80 mb-8">
-              Kính Lễ là dự án cộng đồng. Chúng tôi luôn hoan nghênh sự đóng góp, phản hồi và hợp tác từ mọi người để
-              ngày càng hoàn thiện hơn.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+        <section className="py-16 bg-linear-to-br from-[#6D2323]/5 via-[#E5D0AC]/10 to-[#FBA51C]/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-[#6D2323] text-center mb-12">Thông tin liên hệ</h2>
+            
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Contact Info */}
+              <div className="space-y-8">
+                {/* Brand Info */}
+                <div className="bg-white rounded-xl p-8 border border-[#E5D0AC] shadow-sm">
+                  <h3 className="text-2xl font-bold text-[#6D2323] mb-3">Kính Lễ</h3>
+                  <p className="text-lg text-foreground/80 mb-6">
+                    Nền tảng số hóa lịch truyền thống Việt Nam
+                  </p>
+                  <p className="text-muted-foreground">
+                    Sứ mệnh bảo tồn và hiện đại hóa lịch Việt trên nền tảng công nghệ
+                  </p>
+                </div>
+
+                {/* Location */}
+                <div className="bg-white rounded-xl p-8 border border-[#E5D0AC] shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#A31D1D]/10 rounded-lg flex items-center justify-center shrink-0">
+                      <span className="text-2xl">📍</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-[#6D2323] mb-2">Địa điểm</h4>
+                      <p className="text-foreground/80">Khu công nghệ cao Hòa Lạc</p>
+                      <p className="text-foreground/80">Hà Nội, Việt Nam</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contact Details */}
+                <div className="bg-white rounded-xl p-8 border border-[#E5D0AC] shadow-sm space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#A31D1D]/10 rounded-lg flex items-center justify-center shrink-0">
+                      <span className="text-2xl">📞</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-[#6D2323] mb-2">Số điện thoại</h4>
+                      <a href="tel:+84903242748" className="text-[#A31D1D] hover:text-[#6D2323] transition-colors text-lg">
+                        090 324 27 48
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#A31D1D]/10 rounded-lg flex items-center justify-center shrink-0">
+                      <span className="text-2xl">📧</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-[#6D2323] mb-2">Email</h4>
+                      <a href="mailto:kinhleapp2025@gmail.com" className="text-[#A31D1D] hover:text-[#6D2323] transition-colors text-lg break-all">
+                        kinhleapp2025@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div className="bg-white rounded-xl p-4 border border-[#E5D0AC] shadow-sm">
+                <div className="aspect-square md:aspect-auto md:h-full min-h-[400px] rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29799.88164721564!2d105.52439957431642!3d21.012727900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345b465a4e65fb%3A0xaae6040cfabe8fe!2zS2h1IGPDtG5nIG5naOG7hyBjYW8gSG_DoCBM4bqhYw!5e0!3m2!1svi!2s!4v1733059200000!5m2!1svi!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 justify-center mt-12">
               <a
-                href="#contact"
-                className="px-6 py-3 bg-wine-red text-white rounded-lg hover:bg-wine-red/90 transition-colors font-medium"
+                href="/contact"
+                className="px-6 py-3 bg-[#A31D1D] text-white rounded-lg hover:bg-[#6D2323] transition-colors font-medium"
               >
-                Liên hệ với chúng tôi
+                Gửi tin nhắn
               </a>
               <a
-                href="#blog"
-                className="px-6 py-3 border-2 border-wine-red text-wine-red rounded-lg hover:bg-wine-red/5 transition-colors font-medium"
+                href="/blog"
+                className="px-6 py-3 border-2 border-[#A31D1D] text-[#A31D1D] rounded-lg hover:bg-[#A31D1D]/5 transition-colors font-medium"
               >
                 Đọc Bài viết
               </a>

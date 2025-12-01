@@ -55,8 +55,9 @@ export function Footer() {
                 { label: "Dịch vụ", href: "/services" },
                 { label: "Văn khấn", href: "/prayers" },
                 { label: "Ngày lễ", href: "/festivals" },
+                { label: "Cửa hàng", href: "/shop" },
                 { label: "Bài viết", href: "/blog" },
-                { label: "Liên hệ", href: "#contact" },
+                { label: "Liên hệ", href: "/contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a

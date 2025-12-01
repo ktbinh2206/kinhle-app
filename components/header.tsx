@@ -23,9 +23,10 @@ export function Header() {
     { label: "Về Kính Lễ", href: "/about" },
     { label: "Văn khấn", href: "/prayers" },
     { label: "Ngày lễ", href: "/festivals" },
+    { label: "Cửa hàng", href: "/shop" },
     { label: "Bài viết", href: "/blog" },
     { label: "Dịch vụ", href: "/services" },
-    { label: "Liên hệ", href: "#contact" },
+    { label: "Liên hệ", href: "/contact" },
   ]
 
   return (

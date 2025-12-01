@@ -46,68 +46,24 @@ export function BannerSlider() {
   const slide = slides[currentSlide]
 
   return (
-    <section className="relative w-full h-[calc(100vh-120px)] overflow-hidden mt-26">
+    <section className="relative w-full overflow-hidden mt-26">
       {/* Slides */}
       {slides.map((s, index) => (
         <div
           key={s.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
+          className={`transition-opacity duration-1000 ${
+            index === currentSlide ? "opacity-100" : "opacity-0 absolute inset-0"
           }`}
         >
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full">
             <img 
               src={s.imageUrl || "/placeholder.svg"} 
               alt={s.title} 
-              className="h-full w-auto object-contain" 
+              className="w-full h-auto object-cover" 
             />
           </div>
         </div>
       ))}
-
-      {/* Content */}
-      <div className="relative h-full flex flex-col items-start justify-center px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto w-full">
-        <div className="space-y-6 max-w-2xl">
-          {slide.subtitle && (
-            <p className="text-lg sm:text-xl text-gold font-semibold tracking-wider uppercase">{slide.subtitle}</p>
-          )}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white text-balance">{slide.title}</h1>
-          <p className="text-lg sm:text-xl text-white/90 text-balance leading-relaxed">{slide.description}</p>
-
-          {/* CTA Buttons */}
-          {/* <div className="flex gap-4 pt-4 flex-wrap">
-            <a
-              href={slide.ctaLink}
-              className="px-8 py-3 bg-[#A31D1D] text-white font-semibold rounded-lg hover:bg-[#8B1515] transition-colors duration-300"
-            >
-              {slide.ctaLabel}
-            </a>
-            <a
-              href="#"
-              className="px-8 py-3 border-2 border-[#FBA51C] text-[#FBA51C] font-semibold rounded-lg hover:bg-[#FBA51C] hover:text-foreground transition-colors duration-300"
-            >
-              Xem chi tiết
-            </a>
-          </div> */}
-        </div>
-      </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-wine-red/80 hover:bg-wine-red hover:scale-110 active:scale-95 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:cursor-pointer"
-        aria-label="Slide trước"
-      >
-        <ChevronLeft size={28} className="text-white" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 p-3 bg-wine-red/80 hover:bg-wine-red hover:scale-110 active:scale-95 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:cursor-pointer"
-        aria-label="Slide tiếp theo"
-      >
-        <ChevronRight size={28} className="text-white" />
-      </button>
 
       {/* Indicator Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
