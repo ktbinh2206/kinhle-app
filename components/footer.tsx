@@ -99,7 +99,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-primary mb-6">Tải Ứng Dụng Lịch Việt</h3>
+              <h3 className="text-lg font-bold text-primary mb-6">Tải Ứng Dụng Kính Lễ</h3>
               <div className="flex gap-4">
                 {[
                   { label: "iOS", emoji: "🍎" },

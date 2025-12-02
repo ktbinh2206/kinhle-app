@@ -45,21 +45,20 @@ export default function ContactPage() {
       };
 
       //   await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       
-      setTimeout(() => {
-        setSubmitStatus({
-          type: "success",
-          message:
-            "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      }, 2000); // Simulate delay for demo purposes
+      setSubmitStatus({
+        type: "success",
+        message:
+          "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
       console.error("EmailJS error:", error);
       setSubmitStatus({
@@ -318,7 +317,7 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#A31D1D] hover:bg-[#6D2323] text-white py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#A31D1D] hover:bg-[#6D2323] text-white py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -327,7 +326,7 @@ export default function ContactPage() {
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5 mr-2" />
+                        <Send className="w-5 h-5 mr-2 " />
                         Gửi tin nhắn
                       </>
                     )}

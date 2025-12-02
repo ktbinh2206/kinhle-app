@@ -20,6 +20,8 @@ export default function ShopPage() {
   const [priceRange, setPriceRange] = useState<number[]>([10000, 10000000]);
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState<string>("default");
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 9;
 
   // Filter products
   let filteredProducts = productsData.filter((product) => {
@@ -39,6 +41,18 @@ export default function ShopPage() {
   } else if (sortBy === "rating") {
     filteredProducts.sort((a, b) => b.rating - a.rating);
   }
+
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const endIndex = startIndex + productsPerPage;
+  const currentProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  const handleFilterChange = (callback: () => void) => {
+    callback();
+    setCurrentPage(1);
+  };
 
   const renderStars = (rating: number) => {
     return (
@@ -90,8 +104,12 @@ export default function ShopPage() {
                       key={store.id}
                       className="overflow-hidden hover:shadow-lg transition-shadow"
                     >
-                      <div className="aspect-square bg-linear-to-br from-[#E5D0AC] to-[#FEF9E1] flex items-center justify-center text-[#6D2323] font-semibold">
-                        Ảnh
+                      <div className="aspect-square overflow-hidden bg-gray-100">
+                        <img 
+                          src={store.image} 
+                          alt={store.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div className="p-4">
                         <h3 className="font-semibold text-[#6D2323] mb-2">
@@ -119,7 +137,7 @@ export default function ShopPage() {
                     </h2>
                     <div className="space-y-2">
                       <button
-                        onClick={() => setSelectedCategory("all")}
+                        onClick={() => handleFilterChange(() => setSelectedCategory("all"))}
                         className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                           selectedCategory === "all"
                             ? "bg-[#A31D1D] text-white"
@@ -131,7 +149,7 @@ export default function ShopPage() {
                       {categories.map((category) => (
                         <button
                           key={category.id}
-                          onClick={() => setSelectedCategory(category.id)}
+                          onClick={() => handleFilterChange(() => setSelectedCategory(category.id))}
                           className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                             selectedCategory === category.id
                               ? "bg-[#A31D1D] text-white"
@@ -230,13 +248,17 @@ export default function ShopPage() {
 
                   {/* Products Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredProducts.map((product) => (
+                    {currentProducts.map((product) => (
                       <Card
                         key={product.id}
                         className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                       >
-                        <div className="relative aspect-square bg-linear-to-br from-[#E5D0AC] to-[#FEF9E1] flex items-center justify-center text-[#6D2323] font-semibold">
-                          Ảnh sản phẩm
+                        <div className="relative aspect-square overflow-hidden bg-gray-100">
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            className="w-full h-full object-cover"
+                          />
                           {product.discount > 0 && (
                             <Badge className="absolute top-4 right-4 bg-[#A31D1D] text-white">
                               {product.discount}% off
@@ -275,6 +297,61 @@ export default function ShopPage() {
                       <p className="text-muted-foreground text-lg">
                         Không tìm thấy sản phẩm phù hợp
                       </p>
+                    </div>
+                  )}
+
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-2 mt-8">
+                      <Button
+                        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                        disabled={currentPage === 1}
+                        variant="outline"
+                        className="border-[#E5D0AC] hover:bg-[#E5D0AC]/20 disabled:opacity-50"
+                      >
+                        Trang trước
+                      </Button>
+                      
+                      <div className="flex items-center gap-2">
+                        {[...Array(totalPages)].map((_, index) => {
+                          const page = index + 1;
+                          // Show first page, last page, current page, and pages around current
+                          if (
+                            page === 1 ||
+                            page === totalPages ||
+                            (page >= currentPage - 1 && page <= currentPage + 1)
+                          ) {
+                            return (
+                              <Button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={`w-10 h-10 ${
+                                  currentPage === page
+                                    ? "bg-[#A31D1D] text-white hover:bg-[#6D2323]"
+                                    : "bg-[#E5D0AC] text-[#6D2323] hover:bg-[#E5D0AC]/70"
+                                }`}
+                              >
+                                {page}
+                              </Button>
+                            );
+                          } else if (
+                            page === currentPage - 2 ||
+                            page === currentPage + 2
+                          ) {
+                            return <span key={page} className="text-muted-foreground">...</span>;
+                          }
+                          return null;
+                        })}
+                      </div>
+
+                      <Button
+                        onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                        disabled={currentPage === totalPages}
+                        variant="outline"
+                        className="border-[#E5D0AC] hover:bg-[#E5D0AC]/20 disabled:opacity-50"
+                      >
+                        Trang sau
+                      </Button>
                     </div>
                   )}
                 </div>
