@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ImageLoader } from "@/components/ui/image-loader"
 import { bannerSlides } from "@/lib/mockdata"
 
 export function BannerSlider() {

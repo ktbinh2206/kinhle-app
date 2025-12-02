@@ -1,7 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { galleryImages } from "@/lib/mockdata"
+import { ImageLoader } from "@/components/ui/image-loader"
 import { useState } from "react"
 import { X } from "lucide-react"
 
@@ -23,12 +23,12 @@ export function GallerySection() {
               className="relative h-64 bg-muted rounded-lg overflow-hidden cursor-pointer group"
               onClick={() => setSelectedImage(index)}
             >
-              <Image
+              <ImageLoader
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                className="group-hover:scale-110 transition-transform duration-300"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

@@ -1,7 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { stories } from "@/lib/mockdata"
+import { ImageLoader } from "@/components/ui/image-loader"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -23,8 +23,14 @@ export function StoriesSection() {
               key={story.id}
               className="overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
-              <div className="relative h-48 bg-muted">
-                <img src={story.image || "/placeholder.svg"} alt={story.title} className="w-full h-full object-cover" />
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-4">
+                <ImageLoader 
+                  src={story.image || "/placeholder.svg"} 
+                  alt={story.title} 
+                  fill 
+                  loading="lazy" 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+                />
               </div>
               <div className="p-6 flex-1 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
