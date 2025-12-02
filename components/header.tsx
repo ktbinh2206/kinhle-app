@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { SearchBar } from "./search-bar"
 
@@ -38,7 +39,9 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="Kính Lễ" className="w-14 h-14 object-contain rounded-lg" />
+          <div className="relative w-14 h-14">
+            <Image src="/logo.png" alt="Kính Lễ" fill className="object-contain rounded-lg" priority />
+          </div>
           <span className="font-bold text-xl text-primary hidden sm:inline">Kính Lễ</span>
         </div>
 

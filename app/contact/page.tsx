@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -106,11 +107,15 @@ export default function ContactPage() {
               {/* Brand Info */}
               <Card className="p-8 border-[#E5D0AC]">
                 <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src="/logo.png"
-                    alt="Kính Lễ"
-                    className="w-16 h-16 object-contain rounded-lg"
-                  />
+                  <div className="relative w-16 h-16">
+                    <Image
+                      src="/logo.png"
+                      alt="Kính Lễ"
+                      fill
+                      className="object-contain rounded-lg"
+                      priority
+                    />
+                  </div>
                   <div>
                     <h2 className="text-2xl font-bold text-[#6D2323]">
                       Kính Lễ

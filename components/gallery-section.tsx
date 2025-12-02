@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { galleryImages } from "@/lib/mockdata"
 import { useState } from "react"
 import { X } from "lucide-react"
@@ -22,10 +23,13 @@ export function GallerySection() {
               className="relative h-64 bg-muted rounded-lg overflow-hidden cursor-pointer group"
               onClick={() => setSelectedImage(index)}
             >
-              <img
+              <Image
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                 <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold">
@@ -42,11 +46,14 @@ export function GallerySection() {
             className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedImage(null)}
           >
-            <div className="relative max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-              <img
+            <div className="relative max-w-4xl w-full h-[80vh]" onClick={(e) => e.stopPropagation()}>
+              <Image
                 src={galleryImages[selectedImage].src || "/placeholder.svg"}
                 alt={galleryImages[selectedImage].alt}
-                className="w-full h-auto rounded-lg"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-contain rounded-lg"
+                priority
               />
               <button
                 className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-200 transition-colors"
