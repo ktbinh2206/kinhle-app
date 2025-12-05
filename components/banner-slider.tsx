@@ -48,7 +48,7 @@ export function BannerSlider() {
 
   return (
     <section className="relative w-full overflow-hidden mt-26 bg-linear-to-br from-[#6D2323]/5 via-[#E5D0AC]/10 to-[#FBA51C]/5">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-6xl mx-auto px-14 sm:px-16 lg:px-10 py-8">
         {/* Slides */}
         {slides.map((s, index) => (
           <div
@@ -61,7 +61,7 @@ export function BannerSlider() {
               <img 
                 src={s.imageUrl || "/placeholder.svg"} 
                 alt={s.title} 
-                className="max-w-6xl w-full h-auto object-contain rounded-lg shadow-lg" 
+                className="max-w-3xl w-full h-auto object-contain rounded-lg shadow-lg" 
               />
             </div>
           </div>
