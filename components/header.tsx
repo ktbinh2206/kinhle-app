@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Download } from "lucide-react"
 import { SearchBar } from "./search-bar"
 
-export function Header() {
+export function   Header() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -30,13 +30,23 @@ export function Header() {
     { label: "Liên hệ", href: "/contact" },
   ]
 
+  const handleDownloadApp = () => {
+    // Create a download link for the app
+    const link = document.createElement('a')
+    link.href = '/kinhle-app.apk' // Path to your APK file in public folder
+    link.download = 'KinhLe.apk'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-background/95 backdrop-blur-md border-b border-muted" : "bg-background"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="relative w-14 h-14">
@@ -68,6 +78,13 @@ export function Header() {
         {/* Search & Auth Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <SearchBar />
+          <button 
+            onClick={handleDownloadApp}
+            className="flex items-center gap-2 px-4 py-2 bg-[#A31D1D] text-white rounded-lg hover:bg-[#6D2323] transition-colors font-medium cursor-pointer"
+          >
+            <Download className="w-4 h-4" />
+            Tải App
+          </button>
           <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium">
             Đăng nhập
           </button>
@@ -109,6 +126,13 @@ export function Header() {
               )
             })}
             <div className="flex flex-col gap-3 pt-4 border-t border-muted">
+              <button 
+                onClick={handleDownloadApp}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-[#A31D1D] text-white rounded-lg hover:bg-[#6D2323] transition-colors font-medium cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                Tải App
+              </button>
               <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-left">
                 Đăng nhập
               </button>
