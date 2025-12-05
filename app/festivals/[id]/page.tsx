@@ -4,7 +4,9 @@ import { use } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getFestivalById } from "@/lib/festivals-data"
-import { Calendar, Sparkles, ArrowLeft, Flower2 } from "lucide-react"
+import { prayersData } from "@/lib/prayers-data"
+import { blogPosts } from "@/lib/blog-data"
+import { Calendar, Sparkles, ArrowLeft, Flower2, BookOpen, FileText } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
@@ -25,6 +27,18 @@ export default function FestivalDetailPage({ params }: FestivalDetailPageProps) 
   if (!festival) {
     notFound()
   }
+
+  // Get related prayers
+  const relatedPrayers = festival.relatedPrayers
+    ? Object.values(prayersData)
+        .flat()
+        .filter((prayer) => festival.relatedPrayers?.includes(prayer.id))
+    : []
+
+  // Get related blog posts
+  const relatedBlogPosts = festival.relatedPosts
+    ? blogPosts.filter((post) => festival.relatedPosts?.includes(post.id))
+    : []
 
   return (
     <main className="min-h-screen bg-background">
@@ -100,7 +114,7 @@ export default function FestivalDetailPage({ params }: FestivalDetailPageProps) 
 
           {/* Notes Section */}
           {festival.notes && festival.notes.length > 0 && (
-            <Card className="p-6 md:p-8 bg-wine-red/5">
+            <Card className="p-6 md:p-8 bg-wine-red/5 mb-6">
               <h3 className="text-xl font-bold text-wine-red mb-4">
                 Lưu ý
               </h3>
@@ -115,16 +129,105 @@ export default function FestivalDetailPage({ params }: FestivalDetailPageProps) 
             </Card>
           )}
 
+          {/* Related Prayers Section */}
+          {relatedPrayers.length > 0 && (
+            <Card className="p-6 md:p-8 mb-6">
+              <div className="flex items-center gap-2 mb-6">
+                <BookOpen className="w-6 h-6 text-wine-red" />
+                <h2 className="text-2xl font-bold text-wine-red">Văn khấn liên quan</h2>
+              </div>
+              
+              <div className="grid gap-4">
+                {relatedPrayers.map((prayer) => (
+                  <Link 
+                    key={prayer.id} 
+                    href={`/prayers/${prayer.category}/${prayer.id}`}
+                    className="block group"
+                  >
+                    <Card className="p-4 hover:shadow-lg transition-all duration-300 border-wine-red/20 hover:border-wine-red/40">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-lg text-wine-red group-hover:text-wine-red/80 mb-2">
+                            {prayer.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                            {prayer.description}
+                          </p>
+                          <div className="flex items-center gap-2">
+                            <Badge variant="outline" className="text-xs border-wine-red/30 text-wine-red">
+                              <Calendar className="w-3 h-3 mr-1" />
+                              {prayer.occasion}
+                            </Badge>
+                          </div>
+                        </div>
+                        <ArrowLeft className="w-5 h-5 text-wine-red rotate-180 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {/* Related Blog Posts Section */}
+          {relatedBlogPosts.length > 0 && (
+            <Card className="p-6 md:p-8 mb-6">
+              <div className="flex items-center gap-2 mb-6">
+                <FileText className="w-6 h-6 text-wine-red" />
+                <h2 className="text-2xl font-bold text-wine-red">Bài viết liên quan</h2>
+              </div>
+              
+              <div className="grid gap-4">
+                {relatedBlogPosts.map((post) => (
+                  <Link 
+                    key={post.id} 
+                    href={`/blog/${post.slug}`}
+                    className="block group"
+                  >
+                    <Card className="p-4 hover:shadow-lg transition-all duration-300 border-wine-red/20 hover:border-wine-red/40">
+                      <div className="flex items-start gap-4">
+                        <div className="relative w-20 h-20 bg-wine-red/10 rounded-lg overflow-hidden shrink-0">
+                          <Image
+                            src={post.thumbnail}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-lg text-wine-red group-hover:text-wine-red/80 mb-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                            {post.excerpt}
+                          </p>
+                          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                            <span>{post.author.name}</span>
+                            <span>•</span>
+                            <span>{post.readTime}</span>
+                            <span>•</span>
+                            <span>{post.publishedAt}</span>
+                          </div>
+                        </div>
+                        <ArrowLeft className="w-5 h-5 text-wine-red rotate-180 group-hover:translate-x-1 transition-transform shrink-0" />
+                      </div>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </Card>
+          )}
+
           {/* Related Links */}
           <div className="mt-8 flex justify-center gap-4">
             <Link href="/prayers">
               <Button className="bg-wine-red hover:bg-wine-red/90">
-                Xem văn khấn liên quan
+                Xem tất cả văn khấn
               </Button>
             </Link>
             <Link href="/blog">
               <Button variant="outline" className="border-wine-red text-wine-red hover:bg-wine-red/10">
-                Đọc bài viết
+                Xem tất cả bài viết
               </Button>
             </Link>
           </div>

@@ -14,15 +14,14 @@ export function Footer() {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-bold text-primary mb-2">Kính Lễ</h3>
-              <p className="text-foreground/70 text-sm">Nền tảng số hóa lịch truyền thống Việt Nam</p>
+              <p className="text-foreground/70 text-sm">Kết nối gia đình bằng sợi chỉ văn hóa truyền thống</p>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin size={20} className="text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-foreground/80">
-                  <p>Khu công nghệ cao Hòa Lạc</p>
-                  <p>Hà Nội, Việt Nam</p>
+                  <p>Số 10, ngõ 65 - G11, phố Yên Lộ, Yên Nghĩa, Hà Nội, Việt Nam</p>
                 </div>
               </div>
 

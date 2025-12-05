@@ -9,6 +9,8 @@ export interface Festival {
   meaning: string
   offerings: string
   notes?: string[]
+  relatedPrayers?: string[] // IDs của các bài khấn liên quan
+  relatedPosts?: string[] // IDs của các bài viết liên quan
 }
 
 export const festivalsData: Festival[] = [
@@ -33,6 +35,14 @@ Nhìn chung, các tập tục trong ngày rằm tháng Giêng đều thể hiệ
       "Nên đi chùa, thắp hương cầu bình an",
       "Nhiều người chọn ăn chay trong ngày này",
       "Thích hợp để cầu may mắn cho cả năm"
+    ],
+    relatedPrayers: [
+      "mong-mot-ram",
+      "ram-thang-gieng-nguyen-tieu",
+    ],
+    relatedPosts: [
+      "1",
+      "2"
     ]
   }
 ]

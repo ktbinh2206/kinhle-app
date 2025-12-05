@@ -47,7 +47,7 @@ export default function ContactPage() {
 
       //   await emailjs.send(serviceId, templateId, templateParams, publicKey)
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      
+
       setSubmitStatus({
         type: "success",
         message:
@@ -121,14 +121,10 @@ export default function ContactPage() {
                       Kính Lễ
                     </h2>
                     <p className="text-lg text-foreground/80">
-                      Nền tảng số hóa lịch truyền thống Việt Nam
+                      Kết nối gia đình bằng sợi chỉ văn hóa truyền thống
                     </p>
                   </div>
                 </div>
-                <p className="text-muted-foreground">
-                  Sứ mệnh bảo tồn và hiện đại hóa lịch Việt trên nền tảng công
-                  nghệ
-                </p>
               </Card>
 
               {/* Contact Details */}
@@ -142,7 +138,7 @@ export default function ContactPage() {
                       Địa điểm
                     </h3>
                     <p className="text-foreground/80">
-                      Khu công nghệ cao Hòa Lạc
+                      Số 10, ngõ 65 - G11, phố Yên Lộ, Yên Nghĩa
                     </p>
                     <p className="text-foreground/80">Hà Nội, Việt Nam</p>
                   </div>
@@ -187,7 +183,7 @@ export default function ContactPage() {
               <Card className="p-4 border-[#E5D0AC]">
                 <div className="aspect-video rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29799.88164721564!2d105.52439957431642!3d21.012727900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345b465a4e65fb%3A0xaae6040cfabe8fe!2zS2h1IGPDtG5nIG5naOG7hyBjYW8gSG_DoCBM4bqhYw!5e0!3m2!1svi!2s!4v1733059200000!5m2!1svi!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1108.5485125082737!2d105.73340696697137!3d20.95703888082116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452588c8a8bf5%3A0x5f421f15c96f37a7!2zNjUgUC4gWcOqbiBM4buZLCBOZ2jEqWEgTOG7mSwgSMOgIMSQw7RuZywgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1764948366926!5m2!1svi!2s"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

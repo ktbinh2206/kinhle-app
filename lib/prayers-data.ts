@@ -10,6 +10,7 @@ export interface Prayer {
   content: string[];
   preparation: string[];
   notes: string[];
+  relatedFestivals?: string[]; // IDs của các ngày lễ liên quan
 }
 
 export const prayersData: Record<string, Prayer[]> = {
@@ -85,6 +86,7 @@ export const prayersData: Record<string, Prayer[]> = {
         "Sau khi cúng, rắc gạo muối ra ngoài đường, không mang lễ vào nhà",
         "Tránh trẻ con tranh giành đồ cúng khi chưa hóa vàng, kết lễ"
       ],
+      relatedFestivals: ["nguyen-tieu"],
       content: [
         "Nam mô a di Đà Phật!",
         "Nam mô a di Đà Phật!",

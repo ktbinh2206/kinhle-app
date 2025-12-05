@@ -5,7 +5,10 @@ import { Footer } from "@/components/footer"
 import { PrayerActionButtons } from "@/components/prayer-action-buttons"
 import Link from "next/link"
 import { getPrayerById, categoryInfo } from "@/lib/prayers-data"
+import { festivalsData } from "@/lib/festivals-data"
 import { notFound } from "next/navigation"
+import { Card } from "@/components/ui/card"
+import Image from "next/image"
 
 interface PrayerDetailPageProps {
   params: Promise<{
@@ -38,6 +41,11 @@ export default async function PrayerDetailPage({ params }: PrayerDetailPageProps
   if (!prayer || !categoryData) {
     notFound()
   }
+
+  // Get related festivals
+  const relatedFestivals = prayer.relatedFestivals
+    ? festivalsData.filter((festival) => prayer.relatedFestivals?.includes(festival.id))
+    : []
 
   return (
     <>
@@ -84,30 +92,6 @@ export default async function PrayerDetailPage({ params }: PrayerDetailPageProps
                       />
                     </svg>
                     {prayer.occasion}
-                  </span>
-
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                    {prayer.difficulty}
-                  </span>
-
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {prayer.duration}
                   </span>
                 </div>
               </div>
@@ -171,6 +155,58 @@ export default async function PrayerDetailPage({ params }: PrayerDetailPageProps
                 ))}
               </ul>
             </div>
+
+            {/* Related Festivals Section */}
+            {relatedFestivals.length > 0 && (
+              <Card className="p-6 md:p-8 border-wine-red/20">
+                <h2 className="text-2xl font-bold text-wine-red mb-6 flex items-center gap-2">
+                  <span>🏮</span>
+                  Ngày lễ liên quan
+                </h2>
+                
+                <div className="grid gap-4">
+                  {relatedFestivals.map((festival) => (
+                    <Link 
+                      key={festival.id} 
+                      href={`/festivals/${festival.id}`}
+                      className="block group"
+                    >
+                      <Card className="p-4 hover:shadow-lg transition-all duration-300 border-wine-red/20 hover:border-wine-red/40">
+                        <div className="flex items-start gap-4">
+                          <div className="relative w-24 h-24 bg-wine-red/10 rounded-lg overflow-hidden shrink-0">
+                            <Image
+                              src={festival.image}
+                              alt={festival.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-lg text-wine-red group-hover:text-wine-red/80 mb-2">
+                              {festival.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground mb-3">
+                              📅 {festival.date}
+                            </p>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {festival.meaning.substring(0, 150)}...
+                            </p>
+                          </div>
+                          <svg 
+                            className="w-5 h-5 text-wine-red group-hover:translate-x-1 transition-transform shrink-0" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              </Card>
+            )}
 
             {/* Action Buttons */}
             <PrayerActionButtons />
