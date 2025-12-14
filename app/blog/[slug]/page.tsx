@@ -129,6 +129,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
                     {children}
                   </blockquote>
                 ),
+                img: ({ src, alt }) => (
+                  <img 
+                    src={src} 
+                    alt={alt || ''} 
+                    className="w-[80%] h-auto rounded-lg my-6 mx-auto"
+                  />
+                ),
               }}
             >
               {post.content}
