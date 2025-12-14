@@ -1,11 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Về Kính Lễ - Kính Lễ",
-  description: "Tìm hiểu về Kính Lễ - nền tảng cung cấp thông tin về lịch Việt, ngày lễ, văn khấn và các dịch vụ tâm linh.",
+  description: "Tìm hiểu về Kính Lễ - nền tảng văn hóa tâm linh hàng đầu dành cho người Việt, bảo tồn và kết nối các giá trị truyền thống.",
 }
 
 export default function AboutPage() {
@@ -15,28 +16,38 @@ export default function AboutPage() {
       <main className="min-h-screen bg-background pt-20">
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/kinh-le-background.jpg')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-wine-red/40 backdrop-blur-xs"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-wine-red/90 via-wine-red/70 to-golden/30"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center max-w-3xl mx-auto p-12">
-              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl [text-shadow:2px_2px_8px_rgb(0_0_0/80%)]">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
                 Về Kính Lễ
               </h1>
-              <p className="text-3xl text-white leading-relaxed font-semibold drop-shadow-xl [text-shadow:1px_1px_6px_rgb(0_0_0/70%)]">
-                Nền tảng số hóa văn hóa tâm linh Việt Nam, kết nối truyền thống với hiện đại
+              <p className="text-2xl md:text-3xl text-white leading-relaxed font-medium drop-shadow-xl mb-8">
+                Ứng dụng công nghệ để kiến tạo những giải pháp số mang tính nhân văn, lấy con người làm trung tâm
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Vision Section */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-wine-red mb-6">Vision - Tầm nhìn</h2>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Trở thành ứng dụng dẫn đầu trong việc hỗ trợ và cung cấp thông tin cúng bái chính xác, hiện đại và dễ tiếp cận – không chỉ tại Việt Nam mà còn cho cộng đồng người Việt ở xa xứ.
-              </p>
+              <div className="flex gap-6 justify-center items-center">
+                <Image 
+                  src="/about/login-page.png" 
+                  alt="Kính Lễ Login" 
+                  width={350} 
+                  height={700}
+                  className="rounded-xl shadow-2xl"
+                />
+                <Image 
+                  src="/about/homepage.png" 
+                  alt="Kính Lễ Homepage" 
+                  width={350} 
+                  height={700}
+                  className="rounded-xl shadow-2xl"
+                />
+                <Image 
+                  src="/about/prayers.png" 
+                  alt="Kính Lễ Prayers" 
+                  width={350} 
+                  height={700}
+                  className="rounded-xl shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -44,106 +55,166 @@ export default function AboutPage() {
         {/* Mission Section */}
         <section className="py-16 bg-warm-beige/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-wine-red text-center mb-12">Mission - Sứ mệnh</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
-                <div className="w-12 h-12 bg-wine-red/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">📱</span>
-                </div>
-                <p className="text-foreground/80 leading-relaxed">
-                  Phát triển giải pháp di động sáng tạo, giúp truyền thống trở thành một phần của cuộc sống hiện đại.
-                </p>
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-wine-red mb-4">Sứ mệnh</h2>
+                <div className="w-24 h-1 bg-golden mx-auto mb-8"></div>
               </div>
-
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
-                <div className="w-12 h-12 bg-wine-red/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">✨</span>
-                </div>
-                <p className="text-foreground/80 leading-relaxed">
-                  Tăng cường trải nghiệm tâm linh qua công cụ số hóa tiện lợi, tôn vinh cội nguồn.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
-                <div className="w-12 h-12 bg-wine-red/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">🏮</span>
-                </div>
-                <p className="text-foreground/80 leading-relaxed">
-                  Bảo vệ phong tục thờ cúng tổ tiên như nguồn sức mạnh kết nối và gìn giữ cộng đồng.
+              <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-wine-red/10">
+                <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-center">
+                  Kính Lễ ứng dụng công nghệ để kiến tạo những giải pháp số mang tính nhân văn, lấy con người làm trung tâm, 
+                  nhằm giúp người Việt hiểu, trân trọng và gìn giữ cội nguồn tổ tiên; củng cố sự gắn kết giữa các thế hệ; 
+                  đồng thời bảo tồn những giá trị truyền thống trong một cộng đồng ấm áp, sẻ chia và đầy yêu thương.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Core Values Section */}
+        {/* Vision Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-wine-red text-center mb-12">Core Value - Giá trị cốt lõi</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Value 1 */}
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-wine-red text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-wine-red mb-4">Tầm nhìn</h2>
+                <div className="w-24 h-1 bg-golden mx-auto mb-8"></div>
+              </div>
+              <div className="bg-gradient-to-br from-wine-red/5 to-golden/5 rounded-2xl p-8 md:p-12 shadow-lg border border-wine-red/10">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="flex-shrink-0">
+                    <Image 
+                      src="/about/tet-holiday.jpg" 
+                      alt="Tết Holiday" 
+                      width={550} 
+                      height={367}
+                      className="rounded-xl shadow-md"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
+                      Đến năm 2030, Kính Lễ hướng tới trở thành nền tảng văn hoá – tâm linh hàng đầu dành cho người Việt, 
+                      một ứng dụng tiêu biểu trong việc bảo tồn, kết nối và truyền thừa bền vững các giá trị truyền thống 
+                      qua nhiều thế hệ.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Core Values Section */}
+        <section className="py-16 bg-warm-beige/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-wine-red mb-4">Giá trị cốt lõi</h2>
+              <div className="w-24 h-1 bg-golden mx-auto mb-4"></div>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
+                Năm giá trị nền tảng định hình sứ mệnh của Kính Lễ trong việc bảo tồn và phát triển văn hóa tâm linh Việt Nam
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Value 1: Tiện lợi */}
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-wine-red/10 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-wine-red to-wine-red/80 text-white rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
                     1
                   </div>
-                  <h3 className="text-xl font-semibold text-wine-red">Thuận tiện</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-wine-red mb-2">Tiện lợi</h3>
+                  </div>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  Dễ dàng tiếp cận nghi lễ tâm linh mà không cần nhiều thời gian hay kiến thức chuyên sâu. Linh hoạt, phù hợp mọi lối sống.
+                <p className="text-foreground/80 leading-relaxed">
+                  Kính Lễ mang đến trải nghiệm tâm linh linh hoạt, trực quan, phù hợp với nhịp sống bận rộn của thế hệ hiện đại, 
+                  giúp người dùng thực hành nghi lễ một cách dễ dàng mà không đòi hỏi nhiều thời gian hay kiến thức truyền thống. 
+                  Sự tiện lợi không chỉ nằm ở việc đơn giản hóa thao tác, mà còn giúp mỗi người duy trì sự kết nối với cội nguồn 
+                  một cách tự nhiên và đầy ý nghĩa.
                 </p>
               </div>
 
-              {/* Value 2 */}
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-wine-red text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+              {/* Value 2: Gắn kết gia đình */}
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-wine-red/10 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-wine-red to-wine-red/80 text-white rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
                     2
                   </div>
-                  <h3 className="text-xl font-semibold text-wine-red">Gắn kết gia đình</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-wine-red mb-2">Gắn kết gia đình và các thế hệ</h3>
+                  </div>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  Nhắc lịch giỗ, chia sẻ ảnh kỷ niệm, gợi ý mâm cúng theo vùng miền. Tăng cường kết nối giữa các thế hệ.
+                <p className="text-foreground/80 leading-relaxed">
+                  Kính Lễ nuôi dưỡng tình cảm gia đình thông qua việc nhắc nhở ngày giỗ, gợi ý lễ vật theo vùng miền, 
+                  cũng như lưu giữ ký ức bằng hình ảnh và video. Mỗi tương tác đều góp phần kết nối các thế hệ, 
+                  bởi việc tưởng nhớ tổ tiên không chỉ là nghi lễ mà còn là cách vun đắp yêu thương, lòng kính trọng và sự gắn bó gia đình. 
+                  Kính Lễ trở thành chiếc cầu nối giúp truyền thống được lưu giữ một cách ấm áp và gần gũi.
                 </p>
               </div>
 
-              {/* Value 3 */}
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-wine-red text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+              {/* Value 3: Bảo tồn văn hoá */}
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-wine-red/10 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-wine-red to-wine-red/80 text-white rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
                     3
                   </div>
-                  <h3 className="text-xl font-semibold text-wine-red">Gìn giữ truyền thống</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-wine-red mb-2">Bảo tồn giá trị văn hoá truyền thống</h3>
+                  </div>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  Bảo tồn văn hóa tâm linh qua công nghệ hiện đại. Xây dựng không gian số lành mạnh, truyền cảm hứng về cội nguồn.
+                <p className="text-foreground/80 leading-relaxed">
+                  Kính Lễ gìn giữ và lan tỏa các giá trị văn hoá – tâm linh của người Việt thông qua những giải pháp công nghệ hiện đại. 
+                  Ứng dụng kiến tạo một không gian số lành mạnh để thực hành nghi lễ và thấu hiểu truyền thống, 
+                  góp phần nuôi dưỡng tinh thần "Uống nước nhớ nguồn" và lòng tự hào dân tộc trong thời đại số.
                 </p>
               </div>
 
-              {/* Value 4 */}
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-wine-red text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+              {/* Value 4: Lưu giữ ký ức */}
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-wine-red/10 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-wine-red to-wine-red/80 text-white rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
                     4
                   </div>
-                  <h3 className="text-xl font-semibold text-wine-red">Lưu trữ kỷ niệm</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-wine-red mb-2">Lưu giữ ký ức</h3>
+                  </div>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  Tạo kho lưu trữ di sản gia đình qua ảnh, video, câu chuyện. Nối tiếp truyền thống cho tương lai.
+                <p className="text-foreground/80 leading-relaxed">
+                  Kính Lễ trân trọng từng bức ảnh, thước phim và câu chuyện như những di sản gia đình vô giá. 
+                  Ứng dụng giúp người dùng xây dựng một kho ký ức sống, kết nối quá khứ – hiện tại – tương lai. 
+                  Việc lưu giữ này không chỉ duy trì truyền thống và tưởng nhớ người thân đã khuất, 
+                  mà còn nuôi dưỡng đời sống tinh thần cho các thế hệ mai sau – một hành động của yêu thương, tri ân và gìn giữ văn hoá.
                 </p>
               </div>
 
-              {/* Value 5 */}
-              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-wine-red text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+              {/* Value 5: An tâm */}
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-wine-red/10 hover:shadow-xl transition-all duration-300 md:col-span-2">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-wine-red to-wine-red/80 text-white rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
                     5
                   </div>
-                  <h3 className="text-xl font-semibold text-wine-red">Sự an tâm</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-wine-red mb-2">An tâm</h3>
+                  </div>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  Thông tin cúng bái chính xác, được kiểm chứng. Tuân thủ chuẩn mực văn hóa, phù hợp từng vùng miền.
+                <p className="text-foreground/80 leading-relaxed">
+                  Kính Lễ mang lại sự an tâm thông qua nội dung chính xác, phù hợp với văn hoá và đặc trưng vùng miền. 
+                  Mọi hướng dẫn và nhắc nhở đều được kiểm chứng cẩn trọng, giúp người dùng thực hành nghi lễ đúng đắn và tự tin kết nối với cội nguồn. 
+                  Sự an tâm đến từ việc mỗi hành động đều được dẫn dắt bằng sự chuẩn mực và lòng tôn kính đối với các giá trị truyền thống.
                 </p>
+              </div>
+            </div>
+
+            {/* App Screenshot */}
+            <div className="mt-16 flex justify-center">
+              <div className="text-center">
+                <Image 
+                  src="/about/offline-communication.JPG" 
+                  alt="Kính Lễ Offline" 
+                  width={600} 
+                  height={800}
+                  className="rounded-2xl shadow-2xl border-4 border-white"
+                />
+                <p className="mt-4 text-base text-foreground/60 font-medium">Kết nối mọi lúc mọi nơi</p>
               </div>
             </div>
           </div>
